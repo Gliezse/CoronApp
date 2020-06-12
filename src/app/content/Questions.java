@@ -1,9 +1,7 @@
 package app.content;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static app.content.Constants.*;
 
@@ -13,6 +11,9 @@ public class Questions {
 
         questions.add(QUESTION_1);
         questions.add(QUESTION_2);
+        questions.add(QUESTION_3);
+        questions.add(QUESTION_4);
+        questions.add(QUESTION_5);
 
         return questions;
     }
