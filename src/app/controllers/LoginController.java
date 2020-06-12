@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginController {
-
     @FXML
     private TextField login_name_info;
     @FXML
@@ -63,7 +62,7 @@ public class LoginController {
             appStage.setScene(mainPageScene);
 
             // Objeto para pasar datos desde login a siguientes pantallas
-            Map<String, String> data = new HashMap<>();
+            Map<String, Object> data = new HashMap<>();
             data.put("userName", this.login_name_info.getText());
             MainSceneController mainSceneController = loader.getController();
             // Seteo la data a la siguiente pantalla
