@@ -14,7 +14,7 @@ public class Main extends Application {
         Parent root = loader.load();
         primaryStage.setTitle("Login");
         primaryStage.setResizable(false);
-        Scene loginScene = new Scene(root, 600, 500);
+        Scene loginScene = new Scene(root);
         primaryStage.setScene(loginScene);
         primaryStage.show();
     }
