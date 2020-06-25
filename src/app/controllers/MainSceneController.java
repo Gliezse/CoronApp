@@ -33,6 +33,12 @@ public class MainSceneController {
         goToScene(currentScene, "autodiagnosisForm");
     }
 
+    public void recommendationsClickHandler(ActionEvent actionEvent) {
+        Node eventSourceNode = (Node) actionEvent.getSource();
+        Scene currentScene = eventSourceNode.getScene();
+        goToScene(currentScene, "recommendations");
+    }
+
     private void goToScene(Scene scene, String sceneName) {
         try {
             URL targetSceneFileUrl = new File("src/app/scenes/"+sceneName+".fxml").toURI().toURL();
@@ -42,12 +48,6 @@ public class MainSceneController {
             Stage appStage = (Stage) scene.getWindow();
             appStage.hide();
             appStage.setScene(targetPageScene);
-
-            if (sceneName == "autodiagnosisForm") {
-                AutodiagnosisController autodiagnosisController = loader.getController();
-                // Seteo la data a la siguiente pantalla
-                autodiagnosisController.init(this.superSecretDataStorage);
-            }
 
             appStage.show();
         } catch (IOException e) {

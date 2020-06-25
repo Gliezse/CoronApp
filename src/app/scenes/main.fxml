@@ -11,16 +11,11 @@
          <font>
             <Font name="Calibri Light" size="29.0" />
          </font></Label>
-      <Button layoutX="134.0" layoutY="131.0" mnemonicParsing="false" onAction="#autodiagnosisClickHandler" prefHeight="31.0" prefWidth="218.0" styleClass="btn-primary" text="Realizar AutoDiagnostico">
+      <Button layoutX="132.0" layoutY="148.0" mnemonicParsing="false" onAction="#autodiagnosisClickHandler" prefHeight="31.0" prefWidth="218.0" styleClass="btn-primary" text="Realizar AutoDiagnostico">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button layoutX="134.0" layoutY="175.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" styleClass="btn-primary" text="Recomendaciones generales">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="134.0" layoutY="218.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="218.0" styleClass="btn-primary" text="Estadisticas del virus">
+      <Button layoutX="132.0" layoutY="200.0" mnemonicParsing="false" onAction="#recommendationsClickHandler" prefHeight="31.0" prefWidth="218.0" styleClass="btn-primary" text="Recomendaciones generales">
          <font>
             <Font size="15.0" />
          </font>

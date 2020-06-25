@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.RecommendationsController">
+   <children>
+      <Label layoutX="126.0" layoutY="54.0" text="Recomendaciones generales">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font></Label>
+      <Label layoutX="263.0" layoutY="14.0" prefHeight="27.0" prefWidth="75.0" text="CoronApp" textFill="#283694">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="498.0" layoutY="15.0" mnemonicParsing="false" onAction="#goToMainMenu" styleClass="btn-primary" text="Volver al menú" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="89.0" prefHeight="35.0" prefWidth="236.0" text="Para evitar la propagación de la COVID-19:" wrapText="true" />
+      <Label alignment="CENTER" layoutX="22.0" layoutY="117.0" prefHeight="35.0" prefWidth="557.0" text="Lávese las manos con frecuencia. Use agua y jabón o un desinfectante de manos a base de alcohol." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="142.0" prefHeight="35.0" prefWidth="557.0" text="Manténgase a una distancia segura de cualquier persona que tosa o estornude." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="167.0" prefHeight="35.0" prefWidth="557.0" text="No se toque los ojos, la nariz o la boca" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="191.0" prefHeight="35.0" prefWidth="557.0" text="Cuando tosa o estornude, cúbrase la nariz y la boca con el codo flexionado o con un pañuelo." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="216.0" prefHeight="35.0" prefWidth="557.0" text="Quédese en casa si se siente mal." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="241.0" prefHeight="35.0" prefWidth="557.0" text="Si tiene fiebre, tos y dificultad para respirar, solicite atención médica. Llame con antelación." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="22.0" layoutY="269.0" prefHeight="35.0" prefWidth="557.0" text="Siga las instrucciones de su organismo sanitario local." wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="304.0" prefHeight="35.0" prefWidth="557.0" text="Evitar las visitas innecesarias a los centros de atención médica permite que los sistemas sanitarios funcionen con mayor eficacia, lo que redunda en su protección y en la de los demás." textAlignment="CENTER" wrapText="true" />
+   </children>
+</AnchorPane>

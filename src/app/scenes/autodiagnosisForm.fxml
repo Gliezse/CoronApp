@@ -1,38 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="469.0" prefWidth="600.0" stylesheets="@../../styles/main.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AutodiagnosisController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="76.0" text="CoronApp" textFill="#283694">
+      <Label layoutX="15.0" layoutY="9.0" prefHeight="27.0" prefWidth="75.0" text="CoronApp" textFill="#283694">
          <font>
             <Font name="Calibri" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="questionNumberLabel" layoutX="14.0" layoutY="36.0" text="Pregunta 1 de 5">
-         <font>
-            <Font name="Calibri Light Italic" size="23.0" />
-         </font>
-      </Label>
-      <Label fx:id="questionLabel" alignment="CENTER" layoutX="13.0" layoutY="72.0" prefHeight="81.0" prefWidth="573.0" text="¿Cuál es tu temperatura corporal?" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Calibri Light" size="27.0" />
-         </font>
-      </Label>
-      <TextField fx:id="bodyTemperature" alignment="CENTER" layoutX="237.0" layoutY="181.0" onKeyTyped="#handleTemperatureChange" prefHeight="63.0" prefWidth="126.0" promptText="37">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </TextField>
-      <Button fx:id="nextQuestionBtn" layoutX="232.0" layoutY="346.0" mnemonicParsing="false" onAction="#nextQuestionHandler" prefHeight="35.0" prefWidth="136.0" styleClass="btn-primary" text="Siguiente" />
-      <Label fx:id="bodyTemperatureLabel" layoutX="368.0" layoutY="181.0" prefHeight="107.0" prefWidth="59.0" text="ºC">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
+      <Button layoutX="481.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToMainMenu" styleClass="btn-primary" text="Volver al menú" />
+      <AnchorPane fx:id="questionsPane" layoutX="14.0" layoutY="36.0" visible="false">
+         <children>
+            <Label fx:id="questionNumberLabel" text="Pregunta 1 de 5">
+               <font>
+                  <Font name="Calibri Light Italic" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="questionLabel" alignment="CENTER" layoutY="36.0" prefHeight="81.0" prefWidth="573.0" text="¿Cuál es tu temperatura corporal?" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Calibri Light" size="27.0" />
+               </font>
+            </Label>
+            <Button fx:id="nextQuestionBtn" layoutX="218.0" layoutY="323.0" mnemonicParsing="false" onAction="#nextQuestionHandler" prefHeight="35.0" prefWidth="136.0" styleClass="btn-primary" text="Siguiente" />
+            <AnchorPane fx:id="firstQuestionPane" layoutX="223.0" layoutY="145.0" visible="false">
+               <children>
+                  <TextField fx:id="bodyTemperature" alignment="CENTER" onKeyTyped="#handleTemperatureChange" prefHeight="63.0" prefWidth="126.0" promptText="37">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="bodyTemperatureLabel" layoutX="131.0" prefHeight="107.0" prefWidth="59.0" text="ºC">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="secondQuestionPane" layoutX="85.0" layoutY="117.0" visible="false">
+               <children>
+                  <CheckBox fx:id="tosCheck" mnemonicParsing="false" text="Tos seca">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="cansancioCheck" layoutX="242.0" mnemonicParsing="false" text="Cansancio">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="dolorCabezaCheck" layoutY="122.0" mnemonicParsing="false" text="Dolor de cabeza">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="aireCheck" layoutX="242.0" layoutY="122.0" mnemonicParsing="false" text="Falta de aire">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="molestiaPechoCheck" layoutY="57.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="247.0" text="Molestia en el pecho">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="gargantaCheck" layoutX="242.0" layoutY="60.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="191.0" text="Dolor de garganta">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="thirdQuestionPane" layoutX="177.0" layoutY="170.0" visible="false">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="Si">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="thirdQuestionToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton layoutX="127.0" mnemonicParsing="false" text="No" toggleGroup="$thirdQuestionToggleGroup">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="fourthQuestionPane" layoutX="177.0" layoutY="170.0" visible="false">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="Si">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="fourthQuestionToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton layoutX="127.0" mnemonicParsing="false" text="No" toggleGroup="$fourthQuestionToggleGroup">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="fifthQuestionPane" layoutX="177.0" layoutY="170.0" visible="false">
+               <children>
+                  <RadioButton mnemonicParsing="false" text="Si">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="fifthQuestionToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton layoutX="127.0" mnemonicParsing="false" text="No" toggleGroup="$fifthQuestionToggleGroup">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="resultsPane" layoutX="-3.0" layoutY="79.0" prefWidth="589.0">
+         <children>
+            <Label layoutX="247.0" prefHeight="37.0" prefWidth="107.0" text="Resultados">
+               <font>
+                  <Font name="Calibri" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="resultTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="43.0" prefHeight="107.0" prefWidth="573.0" text="Titulo" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="recommendationText" alignment="CENTER" layoutX="16.0" layoutY="141.0" prefHeight="149.0" prefWidth="573.0" text="Recomendacion" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
