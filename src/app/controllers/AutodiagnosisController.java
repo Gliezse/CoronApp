@@ -1,10 +1,7 @@
 package app.controllers;
 
 import app.content.Questions;
-import app.util.DateTimeUtil;
-import app.util.FormatUtil;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import app.util.AppUtil;
 import javafx.stage.Stage;
@@ -25,7 +21,9 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class AutodiagnosisController implements Initializable {
-    private Map<String, Object> superSecretDataStorage = new HashMap<>();
+    private Map<String, Object> superSecretDataStorage;
+
+    // Pregunta actual
     private int questionNumber = 0;
 
     @FXML private Label questionNumberLabel;
@@ -63,11 +61,23 @@ public class AutodiagnosisController implements Initializable {
     @FXML private Label resultTitle;
     @FXML private Label recommendationText;
 
-    public void handleTemperatureChange(KeyEvent keyEvent) {
-        // TODO
+    // Funcion que se ejecuta cuando se entra a la pantalla desde el menu
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.questionNumber = 0;
+        resultsPane.setVisible(false);
+        questionsPane.setVisible(true);
+
+        setNewQuestion();
     }
 
-    public void nextQuestionHandler(ActionEvent actionEvent) {
+    // Se recibe el state para persistirlo
+    public void init(Map<String, Object> receivedDataStorage) {
+        this.superSecretDataStorage = receivedDataStorage;
+    }
+
+    public void nextQuestionHandler() {
+        // Se maneja la data ingresada antes de pasar a la siguiente pregunta
         switch (this.questionNumber) {
             case 0:
                 String bodyTemperature = this.bodyTemperature.getText();
@@ -112,6 +122,7 @@ public class AutodiagnosisController implements Initializable {
                 break;
         }
 
+        // Si estamos en la última pregunta
         if (this.questionNumber == 4) {
             showResultsScreen();
         } else {
@@ -121,6 +132,7 @@ public class AutodiagnosisController implements Initializable {
 
     }
 
+    // Cargar la siguiente pregunta
     private void setNewQuestion() {
         questionNumberLabel.setText("Pregunta " + (questionNumber + 1) + " de 5");
         String newQuestion = Questions.getQuestions().get(questionNumber);
@@ -129,6 +141,7 @@ public class AutodiagnosisController implements Initializable {
         showCurrentQuestionFields();
     }
 
+    // Esconder todos los campos
     private void hideAllFields() {
         firstQuestionPane.setVisible(false);
         secondQuestionPane.setVisible(false);
@@ -137,6 +150,7 @@ public class AutodiagnosisController implements Initializable {
         fifthQuestionPane.setVisible(false);
     }
 
+    // Mostrar el contenedor de los campos de la pregunta actual
     private void showCurrentQuestionFields() {
         switch (this.questionNumber) {
             case 0:
@@ -159,24 +173,17 @@ public class AutodiagnosisController implements Initializable {
         }
     }
 
+    // Mostrar el panel de los resultados
     private void showResultsScreen() {
         questionsPane.setVisible(false);
+        // Calcular resultados y colocarlos en la pantalla
         int level = AppUtil.calculateResult(superSecretDataStorage);
         resultTitle.setText(AppUtil.getResultTitle(level));
         recommendationText.setText(AppUtil.getResultRecommendation(level));
         resultsPane.setVisible(true);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.questionNumber = 0;
-        System.out.println("init");
-        resultsPane.setVisible(false);
-        questionsPane.setVisible(true);
-
-        setNewQuestion();
-    }
-
+    // Ir al menu principal
     public void goToMainMenu(ActionEvent actionEvent) {
         try {
             URL targetSceneFileUrl = new File("src/app/scenes/main.fxml").toURI().toURL();
@@ -189,6 +196,10 @@ public class AutodiagnosisController implements Initializable {
             Stage appStage = (Stage) scene.getWindow();
             appStage.hide();
             appStage.setScene(targetPageScene);
+
+            MainSceneController mainSceneController = loader.getController();
+            // Seteo la data a la siguiente pantalla
+            mainSceneController.init(superSecretDataStorage);
 
             appStage.show();
         } catch (IOException e) {

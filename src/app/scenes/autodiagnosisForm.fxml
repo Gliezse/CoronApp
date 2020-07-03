@@ -32,7 +32,7 @@
             <Button fx:id="nextQuestionBtn" layoutX="218.0" layoutY="323.0" mnemonicParsing="false" onAction="#nextQuestionHandler" prefHeight="35.0" prefWidth="136.0" styleClass="btn-primary" text="Siguiente" />
             <AnchorPane fx:id="firstQuestionPane" layoutX="223.0" layoutY="145.0" visible="false">
                <children>
-                  <TextField fx:id="bodyTemperature" alignment="CENTER" onKeyTyped="#handleTemperatureChange" prefHeight="63.0" prefWidth="126.0" promptText="37">
+                  <TextField fx:id="bodyTemperature" alignment="CENTER" prefHeight="63.0" prefWidth="126.0" promptText="37">
                      <font>
                         <Font size="50.0" />
                      </font>

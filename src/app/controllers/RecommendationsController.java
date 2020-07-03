@@ -10,8 +10,16 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 
 public class RecommendationsController {
+
+    private Map<String, Object> superSecretDataStorage;
+
+    public void init(Map<String, Object> receivedDataStorage) {
+        this.superSecretDataStorage = receivedDataStorage;
+    }
+
     public void goToMainMenu(ActionEvent actionEvent) {
         try {
             URL targetSceneFileUrl = new File("src/app/scenes/main.fxml").toURI().toURL();
@@ -24,6 +32,9 @@ public class RecommendationsController {
             Stage appStage = (Stage) scene.getWindow();
             appStage.hide();
             appStage.setScene(targetPageScene);
+
+            MainSceneController mainSceneController = loader.getController();
+            mainSceneController.init(superSecretDataStorage);
 
             appStage.show();
         } catch (IOException e) {

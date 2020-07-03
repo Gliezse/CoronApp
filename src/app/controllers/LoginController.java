@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginController {
+
+    // Elementos de la pantalla
     @FXML
     private TextField login_name_info;
     @FXML
@@ -25,6 +27,7 @@ public class LoginController {
     @FXML
     private Button exit_btn;
 
+    // Handler de tipeos en el campo de username
     public void keyTypedHandler(KeyEvent event) {
         if (!login_name_info.getText().isBlank()) {
             login_btn.setDisable(false);
@@ -39,18 +42,20 @@ public class LoginController {
         }
     }
 
+    // Handler boton salir
     public void exitButtonHandler() {
         Stage stage = (Stage) exit_btn.getScene().getWindow();
-        System.out.println("Adiossssss");
         stage.close();
     }
 
+    // Handler de boton continuar
     public void buttonHandler(ActionEvent actionEvent) {
         Node eventSourceNode = (Node) actionEvent.getSource();
         Scene currentScene = eventSourceNode.getScene();
         login(currentScene);
     }
 
+    // Cambio de pantalla de login al menú principal
     private void login(Scene scene) {
         try {
             URL mainSceneFileURL = new File("src/app/scenes/main.fxml").toURI().toURL();
