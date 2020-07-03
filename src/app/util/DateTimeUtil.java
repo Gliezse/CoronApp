@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtil {
-    public static String getTimeBasedGreeting(String name) {
+        public static String getTimeBasedGreeting(String name) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH");
         LocalDateTime now = LocalDateTime.now();
         int localTime = Integer.parseInt(dateTimeFormatter.format(now));

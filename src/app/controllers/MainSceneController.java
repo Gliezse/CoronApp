@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -18,6 +19,9 @@ import java.util.Map;
 public class MainSceneController {
     @FXML
     private Label greetLabel;
+
+    @FXML
+    private Button exitBtn;
 
     // Map que actua como un state de la aplicación y se pasa de pantalla en pantalla
     private Map<String, Object> superSecretDataStorage;
@@ -42,6 +46,11 @@ public class MainSceneController {
         Node eventSourceNode = (Node) actionEvent.getSource();
         Scene currentScene = eventSourceNode.getScene();
         goToScene(currentScene, "recommendations");
+    }
+
+    public void onExit() {
+        Stage stage = (Stage) exitBtn.getScene().getWindow();
+        stage.close();
     }
 
     // Handler para cambiar de escena casi semi-dinàmicamente
