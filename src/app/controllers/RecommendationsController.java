@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.FXMLLoaderFunctions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -22,8 +23,8 @@ public class RecommendationsController {
 
     public void goToMainMenu(ActionEvent actionEvent) {
         try {
-            URL targetSceneFileUrl = new File("src/app/scenes/main.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(targetSceneFileUrl);
+            FXMLLoader loader = new FXMLLoaderFunctions().getLoader("main");
+
             Parent targetPageParent = loader.load();
             Node eventSourceNode = (Node) actionEvent.getSource();
             Scene targetPageScene = new Scene(targetPageParent);

@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.FXMLLoaderFunctions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,9 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,8 +57,7 @@ public class LoginController {
     // Cambio de pantalla de login al menú principal
     private void login(Scene scene) {
         try {
-            URL mainSceneFileURL = new File("src/app/scenes/main.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(mainSceneFileURL);
+            FXMLLoader loader = new FXMLLoaderFunctions().getLoader("main");
             Parent mainPageParent = loader.load();
             Scene mainPageScene = new Scene(mainPageParent);
             Stage appStage = (Stage) scene.getWindow();

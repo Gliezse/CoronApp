@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.FXMLLoaderFunctions;
 import app.content.Questions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -186,8 +187,7 @@ public class AutodiagnosisController implements Initializable {
     // Ir al menu principal
     public void goToMainMenu(ActionEvent actionEvent) {
         try {
-            URL targetSceneFileUrl = new File("src/app/scenes/main.fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(targetSceneFileUrl);
+            FXMLLoader loader = new FXMLLoaderFunctions().getLoader("main");
             Parent targetPageParent = loader.load();
             Node eventSourceNode = (Node) actionEvent.getSource();
             Scene targetPageScene = new Scene(targetPageParent);

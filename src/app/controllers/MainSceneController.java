@@ -1,5 +1,6 @@
 package app.controllers;
 
+import app.FXMLLoaderFunctions;
 import app.util.DateTimeUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,8 +57,7 @@ public class MainSceneController {
     // Handler para cambiar de escena casi semi-dinàmicamente
     private void goToScene(Scene scene, String sceneName) {
         try {
-            URL targetSceneFileUrl = new File("src/app/scenes/"+sceneName+".fxml").toURI().toURL();
-            FXMLLoader loader = new FXMLLoader(targetSceneFileUrl);
+            FXMLLoader loader = new FXMLLoaderFunctions().getLoader(sceneName);
             Parent targetPageParent = loader.load();
             Scene targetPageScene = new Scene(targetPageParent);
             Stage appStage = (Stage) scene.getWindow();
